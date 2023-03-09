@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Title Case Converter</title>
+  <style>
+    /* Set the background color of the page to a deep grey and the text color to ivory */
+    body {
+      background-color: #333;
+      color: ivory;
+    }
+  </style>
+  <script>
+    // Define the function to convert text to title case
+    function toTitleCase(str) {
+      // Use a regular expression to match all words in the input string
+      return str.replace(/\w\S*/g, function(txt) {
+        // Check if the word is one of the exceptions that are not capitalized in title case
+        if (/^(a|an|the|and|or|but|in|on|at|by|for|to|of)$/i.test(txt)) {
+          // Return the word in lowercase if it's an exception
+          return txt.toLowerCase();
+        }
+        else {
+          // Capitalize the first letter of the word and convert the rest to lowercase
+          return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        }
+      });
+    }
+
+    // Define the function to convert the text in the input box to title case and display the result
+    function convertText() {
+      var inputText = document.getElementById("inputText").value;
+      var outputText = toTitleCase(inputText);
+      document.getElementById("outputText").value = outputText;
+    }
+  </script>
+</head>
+<body>
+  <h1>Title Case Converter</h1>
+  <!-- Input box for the user to enter text -->
+  <textarea id="inputText" rows="10" cols="50"></textarea><br>
+  <!-- Button to convert the text to title case -->
+  <button onclick="convertText()">Convert to Title Case</button><br>
+  <!-- Output box to display the converted text -->
+  <textarea id="outputText" rows="10" cols="50"></textarea>
+</body>
+</html>
