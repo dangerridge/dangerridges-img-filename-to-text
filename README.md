@@ -1,4 +1,3 @@
-# dangerridges-img-filename-to-text
 Convert any text to title case.
 
 The Title Case Converter is a tool,
